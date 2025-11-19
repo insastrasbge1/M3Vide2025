@@ -20,13 +20,14 @@ package fr.insa.beuvron.utils.database;
 
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
  * Représente une entité de la base de donnée dans Java.
+ * !!!! VERSION 2 : la version 1 avait un bug grave
+ * 
  * <p>
  * permet de gérer les identificateurs créés automatiquement par le sgbd </p>
  * <p>
