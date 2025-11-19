@@ -18,6 +18,7 @@ along with CoursBeuvron.  If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.insa.beuvron.utils.database;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,7 +64,9 @@ import java.sql.Statement;
  *
  * @author francois
  */
-public abstract class ClasseMiroir {
+public abstract class ClasseMiroir implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int id;
 
@@ -152,32 +155,9 @@ public abstract class ClasseMiroir {
         return id;
     }
 
-    @Override
-    public int hashCode() {
-        if (this.id != -1) {
-            return this.id;
-        } else {
-            throw new EntiteNonSauvegardee();
-        }
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        } else if (obj == null) {
-            return false;
-        } else if (getClass() != obj.getClass()) {
-            return false;
-        } else if (this.id == -1) {
-            throw new EntiteNonSauvegardee();
-        }
-        ClasseMiroir other = (ClasseMiroir) obj;
-        if (other.id != -1) {
-            throw new EntiteNonSauvegardee();
-        } else {
-            return this.id == other.id;
-        }
-    }
 
 }
